@@ -69,11 +69,14 @@
             const code = document.getElementById("certificateCode").value;
             const resultDiv = document.getElementById("result");
             
-            if (code === "CA/JA1/3131") { // Example valid code
-                resultDiv.innerHTML = " Certificate is Valid!";
+            // Regular expression to match the pattern CA/****/**** where * can be any combination of alphabets and numbers
+            const regex = /^CA\/[A-Za-z0-9]+\/[A-Za-z0-9]+$/;
+            
+            if (regex.test(code)) {
+                resultDiv.innerHTML = "Certificate is Valid!";
                 resultDiv.style.color = "black";
             } else {
-                resultDiv.innerHTML = " Invalid Certificate Code!";
+                resultDiv.innerHTML = "Invalid Certificate Code!";
                 resultDiv.style.color = "black";
             }
         }
